@@ -41,5 +41,12 @@ object GTFS extends App {
   println(joinedRTCDFWithoutDuplicate.count())
   joinedRTCDFWithoutDuplicate.show()
 
+  // Save DataFrame as CSV
+  joinedRTCDFWithoutDuplicate.write
+    .format("csv")
+    .option("header", "true") // Include header in the output file
+    .mode("overwrite") // Overwrite the output file if it already exists
+    .save("D:/Scala/outputFiles/RTC_DF.csv")
+
   spark.stop()
 }
